@@ -8,7 +8,9 @@ export default function App() {
     <div>
       <NavBar />
       <Routes>
+    app
         <Route path="/cabinet" element={<CabinetPage />} />
+        <Route path="/addbook" element={<AddBookPage />} />
       </Routes>
     </div>
   );
