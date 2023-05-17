@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 import { pathMiddleware } from './middlewares';
+import cabinetRouter from './routes/cabinetRouter';
 import addbookRouter from './routes/addbookRouter';
 
 dotenv.config();
@@ -40,5 +41,8 @@ app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
 app.use('/', addbookRouter);
+
+
+app.use('/cabinet', cabinetRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

@@ -1,11 +1,15 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AddBookPage from './addbook/AddBookPage';
+import React from 'react';
+import NavBar from './ui/NavBar';
+import CabinetPage from './cabinet/CabinetPage';
 
 export default function App() {
   return (
-    <div className="container">
+    <div>
+      <NavBar />
       <Routes>
+    app
+        <Route path="/cabinet" element={<CabinetPage />} />
         <Route path="/addbook" element={<AddBookPage />} />
       </Routes>
     </div>
