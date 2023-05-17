@@ -1,10 +1,23 @@
 import express from 'express';
+import { Book } from '../../db/models';
 
 const indexRouter = express.Router();
 
-indexRouter.get('/', (req, res) => {
+indexRouter.get('/', async (req, res) => {
   try {
-    res.render('Layout', {});
+    const allbooks = await Book.findAll();
+    const initState = { allbooks };
+    res.render('Layout', initState);
+  } catch (e) {
+    console.log(e);
+  }
+});
+indexRouter.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const book = await Book.findByPk(id);
+    const initState = { book };
+    res.render('Layout', initState);
   } catch (e) {
     console.log(e);
   }
