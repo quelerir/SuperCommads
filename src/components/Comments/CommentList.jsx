@@ -1,6 +1,7 @@
-import React from "react";
+import React from 'react';
 
 export default function CommentList({ comment, deleteHandler }) {
+  // console.log(comment);
   return (
     <div>
       <div>{comment.commentbody}</div>
