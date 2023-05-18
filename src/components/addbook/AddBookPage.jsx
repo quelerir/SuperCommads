@@ -24,21 +24,21 @@ export default function AddBookPage() {
   return (
     <div className="card-login">
       <div className="form-container d-flex min-vh-100 justify-content-center align-items-center">
-        <div className="input-group mb-3">
-          <form onSubmit={submitHandler}>
-            <div className="form-group">
-              <input
-                name="bookname"
-                type="text"
-                className="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-                style={{ margin: "10px" }}
-                placeholder="Название книги"
-                onChange={changeHandler}
-                value={input.bookname}
-              />
-            </div>
+        <form onSubmit={submitHandler}>
+          <div className="form-group">
+            <input
+              name="bookname"
+              type="text"
+              className="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              style={{ margin: "10px" }}
+              placeholder="Название книги"
+              onChange={changeHandler}
+              value={input.bookname}
+            />
+          </div>
+          <div className="form-group">
             <input
               name="author"
               type="text"
@@ -50,15 +50,19 @@ export default function AddBookPage() {
               onChange={changeHandler}
               value={input.author}
             />
+          </div>
+          <div className="form-group">
             <textarea
               name="bookannotation"
-              className="form-control"
               aria-label="With textarea"
               style={{ margin: "10px" }}
+              className=" text form-control"
               placeholder="Краткое содержание"
               onChange={changeHandler}
               value={input.bookannotation}
             />
+          </div>
+          <div className="form-group">
             <input
               name="img"
               type="text"
@@ -70,11 +74,11 @@ export default function AddBookPage() {
               onChange={changeHandler}
               value={input.img}
             />
-            <button type="submit" className="btn btn-primary">
-              Добавить книгу
-            </button>
-          </form>
-        </div>
+          </div>
+          <button type="submit" className="btn-login">
+            Добавить книгу
+          </button>
+        </form>
       </div>
     </div>
   );

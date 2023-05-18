@@ -64,6 +64,12 @@
   border-color: #653208;
 }
 
+.text {
+  background-color: transparent;
+  border-color: #653208;
+  color: #d5d4d4;
+}
+
 .form-group input::placeholder {
   color: #d5d4d4;
 }
