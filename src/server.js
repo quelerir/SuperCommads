@@ -41,8 +41,6 @@ app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
 app.use('/', addbookRouter);
-
-
 app.use('/cabinet', cabinetRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

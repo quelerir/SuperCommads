@@ -3,7 +3,10 @@ import React, { useState } from 'react';
 
 export default function AddBookPage() {
   const [input, setInput] = useState({
-    bookname: '', author: '', bookannotation: '', img: '',
+    bookname: '',
+    author: '',
+    bookannotation: '',
+    img: '',
   });
 
   const changeHandler = (event) => {
@@ -14,18 +17,58 @@ export default function AddBookPage() {
     event.preventDefault();
     const responce = await axios.post('/addbook', input);
     if (responce.status === 200) {
-      window.location = '/';
+      window.location = '/books';
     }
   };
 
   return (
     <div className="input-group mb-3">
       <form onSubmit={submitHandler}>
-        <input name="bookname" type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style={{ margin: '10px' }} placeholder="Название книги" onChange={changeHandler} value={input.bookname} />
-        <input name="author" type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style={{ margin: '10px' }} placeholder="Автор книги" onChange={changeHandler} value={input.author} />
-        <textarea name="bookannotation" className="form-control" aria-label="With textarea" style={{ margin: '10px' }} placeholder="Краткое содержание" onChange={changeHandler} value={input.bookannotation} />
-        <input name="img" type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" style={{ margin: '10px' }} placeholder="URL обложки" onChange={changeHandler} value={input.img} />
-        <button type="submit" className="btn btn-primary">Добавить книгу</button>
+        <input
+          name="bookname"
+          type="text"
+          className="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          style={{ margin: '10px' }}
+          placeholder="Название книги"
+          onChange={changeHandler}
+          value={input.bookname}
+        />
+        <input
+          name="author"
+          type="text"
+          className="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          style={{ margin: '10px' }}
+          placeholder="Автор книги"
+          onChange={changeHandler}
+          value={input.author}
+        />
+        <textarea
+          name="bookannotation"
+          className="form-control"
+          aria-label="With textarea"
+          style={{ margin: '10px' }}
+          placeholder="Краткое содержание"
+          onChange={changeHandler}
+          value={input.bookannotation}
+        />
+        <input
+          name="img"
+          type="text"
+          className="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          style={{ margin: '10px' }}
+          placeholder="URL обложки"
+          onChange={changeHandler}
+          value={input.img}
+        />
+        <button type="submit" className="btn btn-primary">
+          Добавить книгу
+        </button>
       </form>
     </div>
   );

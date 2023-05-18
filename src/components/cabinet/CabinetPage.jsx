@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function CabinetPage() {
-  return (
-    <div>CabinetPage</div>
-  )
+  return <div>CabinetPage</div>;
 }

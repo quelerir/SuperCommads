@@ -1,17 +1,18 @@
 import React from 'react';
+import axios from 'axios';
 
 export default function NavBar() {
   const logoutHandler = async () => {
     const res = await axios('/auth/logout');
     if (res.status === 200) {
-      window.location = '/';
+      window.location = '/books';
     }
   };
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/books">
             <img
               style={{ width: '30px', height: '30px' }}
               src="https://www.svgrepo.com/show/269032/book.svg"
