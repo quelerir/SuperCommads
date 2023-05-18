@@ -1,32 +1,31 @@
-import axios from 'axios';
-import React from 'react';
-// import Background from './images/SignUpLogin.jpg';
+import axios from "axios";
+import React from "react";
 
 export default function LoginPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     const response = await axios.post(
-      '/auth/login',
+      "/auth/login",
       Object.fromEntries(new FormData(e.target))
     );
 
     if (response.status === 200) {
-      window.location = '/books';
+      window.location = "/books";
     }
   };
 
   return (
-    <div className="card">
-      <img
+    <div className="card-login">
+      {/* <img
         src="./images/SignUpLogin.jpg"
         className="card-img"
         alt="SignUpLogin"
-      />
-      <div className="container d-flex min-vh-100 justify-content-center align-items-center card-img-overlay">
+      /> */}
+      <div className="form-container d-flex min-vh-100 justify-content-center align-items-center">
         <form onSubmit={submitHandler}>
-          <div className="form-group mx-auto">
+          <div className="form-group">
             <label htmlFor="exampleEmail">
-              Введите Ваш email:
+              <p className="text-label">Введите Ваш email:</p>
               <input
                 name="email"
                 type="email"
@@ -37,7 +36,7 @@ export default function LoginPage() {
           </div>
           <div className="form-group">
             <label htmlFor="examplePassword">
-              Введите Ваш пароль:
+              <p className="text-label"> Введите Ваш пароль:</p>
               <input
                 name="password"
                 type="password"
@@ -46,7 +45,7 @@ export default function LoginPage() {
               />
             </label>
           </div>
-          <button type="submit" className="btn btn-warning">
+          <button type="submit" className="btn-login">
             Войти
           </button>
         </form>
