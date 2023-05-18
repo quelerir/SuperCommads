@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
+import CommentList from "../Comments/CommentList";
 
-export default function Bookpage({ book }) {
+export default function Bookpage({ book, comments }) {
   const [showComments, setShowComments] = useState(false);
+  const [allComensts, setAllComments] = useState(comments);
+
+  const deleteHandler = async (commentId) => {
+    const response = await axios.delete(`/api/comments/${commentId}`, {});
+    if (response.status === 200) {
+      setAllComments(allComensts.filter((comment) => comment.id !== commentId));
+    }
+  };
   return (
     <div>
-      <div className="card mb-3" style={{ maxWidth: '1100px' }}>
+      <div className="card mb-3" style={{ maxWidth: "1100px" }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img src={book.img} className="img-fluid rounded-start" alt="..." />
@@ -42,6 +52,9 @@ export default function Bookpage({ book }) {
         </div>
       </div>
       <div>Коментарии:</div>
+      {allComensts?.map((comment) => (
+        <CommentList key={comments.id} comment={comment} deleteHandler={deleteHandler} />
+      ))}
     </div>
   );
 }

@@ -1,14 +1,14 @@
-import express from 'express';
-import { Book } from '../../db/models';
+import express from "express";
+import { Book } from "../../db/models";
 
 const addbookRouter = express.Router();
 
-addbookRouter.get('/addbook', (req, res) => {
+addbookRouter.get("/addbook", (req, res) => {
   const initState = {};
-  res.render('Layout', initState);
+  res.render("Layout", initState);
 });
 
-addbookRouter.post('/addbook', async (req, res) => {
+addbookRouter.post("/addbook", async (req, res) => {
   const { id } = req.session.user;
   const { bookname, author, bookannotation, img } = req.body;
   await Book.create({
