@@ -46,16 +46,20 @@ export default function NavBar({ user }) {
                   </a>
                 </li>
               )}
-              <li className="nav-item">
-                <a className="nav-link" href="/login">
-                  Login
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/signup">
-                  SignUp
-                </a>
-              </li>
+              {!user && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/login">
+                    Login
+                  </a>
+                </li>
+              )}
+              {!user && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/signup">
+                    SignUp
+                  </a>
+                </li>
+              )}
               {user && (
                 <li className="nav-item">
                   <a onClick={logoutHandler} className="nav-link" href="/">

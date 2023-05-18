@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import CommentList from '../Comments/CommentList';
 
-export default function Bookpage({ book, comments }) {
+export default function Bookpage({ book, comments, average }) {
   const [showComments, setShowComments] = useState(false);
   const [allComensts, setAllComments] = useState(comments);
 
@@ -37,17 +37,9 @@ export default function Bookpage({ book, comments }) {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">
-                Название:
-                <br />
-                {book.bookname}
-              </h5>
-              <h5 className="card-title">
-                Автор:
-                {' '}
-                <br />
-                {book.author}
-              </h5>
+              <h5 className="card-title">Название: {book.bookname}</h5>
+              <h5 className="card-title">Рейтинг: {average}</h5>
+              <h5 className="card-title">Автор: {book.author}</h5>
               <p className="card-text">{book.bookannotation}</p>
             </div>
             <div>
@@ -78,7 +70,7 @@ export default function Bookpage({ book, comments }) {
       </div>
       <div>Коментарии:</div>
       {allComensts?.map((comment) => (
-        <CommentList key={comment.id} comment={comment} deleteHandler={deleteHandler} />
+        <CommentList key={comments.id} setAllComments={setAllComments} comment={comment} deleteHandler={deleteHandler} />
       ))}
     </div>
   );
