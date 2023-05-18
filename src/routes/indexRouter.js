@@ -5,6 +5,14 @@ const indexRouter = express.Router();
 
 indexRouter.get('/', async (req, res) => {
   try {
+    res.redirect('/books');
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+indexRouter.get('/books', async (req, res) => {
+  try {
     const allbooks = await Book.findAll();
     const initState = { allbooks };
     res.render('Layout', initState);
@@ -12,7 +20,8 @@ indexRouter.get('/', async (req, res) => {
     console.log(e);
   }
 });
-indexRouter.get('/:id', async (req, res) => {
+
+indexRouter.get('/books/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const book = await Book.findByPk(id);

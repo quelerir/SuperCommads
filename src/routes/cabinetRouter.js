@@ -5,8 +5,7 @@ const cabinetRouter = express.Router();
 
 cabinetRouter.get('/', async (req, res) => {
   try {
-    const CabinetFavorites = await Favorite.findAll({ where: { user_id: 1 } });
-    console.log(CabinetFavorites);
+    await Favorite.findAll();
     res.render('Layout', {});
   } catch (e) {
     console.log(e);
