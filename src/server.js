@@ -1,16 +1,18 @@
-import express from "express";
-import morgan from "morgan";
-import path from "path";
-import session from "express-session";
-import store from "session-file-store";
-import * as dotenv from "dotenv";
-import jsxRender from "./utils/jsxRender";
-import indexRouter from "./routes/indexRouter";
-import authRouter from "./routes/authRouter";
-import { authMiddleware, pathMiddleware } from "./middlewares";
-import cabinetRouter from "./routes/cabinetRouter";
-import addbookRouter from "./routes/addbookRouter";
+import express from 'express';
+import morgan from 'morgan';
+import path from 'path';
+import session from 'express-session';
+import store from 'session-file-store';
+import * as dotenv from 'dotenv';
+import jsxRender from './utils/jsxRender';
+import indexRouter from './routes/indexRouter';
+import authRouter from './routes/authRouter';
+import { authMiddleware, pathMiddleware } from './middlewares';
+import cabinetRouter from './routes/cabinetRouter';
+import addbookRouter from './routes/addbookRouter';
 import apiCommentsRouter from "./routes/apiCommentsRouter";
+import apiRatingRouter from './routes/apiRatingRouter';
+
 
 dotenv.config();
 
@@ -47,5 +49,7 @@ app.use("/auth", authRouter);
 app.use("/", addbookRouter);
 app.use("/cabinet", cabinetRouter);
 app.use("/api", apiCommentsRouter);
+
+app.use('/api', apiRatingRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

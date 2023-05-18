@@ -13,7 +13,6 @@ export default function LoginPage() {
       window.location = '/books';
     }
   };
-
   return (
     <div className="container d-flex min-vh-100 justify-content-center align-items-center">
       <form onSubmit={submitHandler}>

@@ -1,5 +1,6 @@
-import express from "express";
-import { Book, Comment } from "../../db/models";
+import express from 'express';
+import { Book, Rating, Comment } from '../../db/models';
+
 
 const indexRouter = express.Router();
 
