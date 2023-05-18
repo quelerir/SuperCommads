@@ -16,6 +16,7 @@ export default function Bookpage({ book, comments, average }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    setShowComments(!showComments);
     const response = await axios.post(`/api/addcommets/${book.id}`, input);
     console.log(response);
     setAllComments((prev) => [response.data, ...prev]);
@@ -59,7 +60,6 @@ export default function Bookpage({ book, comments, average }) {
                     placeholder="Комментарий"
                     value={input.commentbody}
                     onChange={addHandler}
-
                   />
                   <button type="submit">Добавить</button>
                 </form>
@@ -70,7 +70,12 @@ export default function Bookpage({ book, comments, average }) {
       </div>
       <div>Коментарии:</div>
       {allComensts?.map((comment) => (
-        <CommentList key={comments.id} setAllComments={setAllComments} comment={comment} deleteHandler={deleteHandler} />
+        <CommentList
+          key={comments.id}
+          setAllComments={setAllComments}
+          comment={comment}
+          deleteHandler={deleteHandler}
+        />
       ))}
     </div>
   );
