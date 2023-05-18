@@ -6,7 +6,8 @@ import store from 'session-file-store';
 import * as dotenv from 'dotenv';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
-import { pathMiddleware } from './middlewares';
+import authRouter from './routes/authRouter';
+import { authMiddleware, pathMiddleware } from './middlewares';
 import cabinetRouter from './routes/cabinetRouter';
 import addbookRouter from './routes/addbookRouter';
 
@@ -38,11 +39,11 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session(sessionConfig));
+app.use(authMiddleware);
 
 app.use('/', indexRouter);
+app.use('/auth', authRouter);
 app.use('/', addbookRouter);
-
-
 app.use('/cabinet', cabinetRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
