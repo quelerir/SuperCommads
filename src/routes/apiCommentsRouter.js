@@ -1,17 +1,12 @@
-import express from 'express';
-import { Comment } from '../../db/models';
+import express from "express";
+import { Comment } from "../../db/models";
 
-const apiCommentsRouter = express.Router();
+const router = express.Router();
 
-apiCommentsRouter.post('/addcommets/:id', async (req, res) => {
+router.delete("/comments/:id", async (req, res) => {
   const { id } = req.params;
-  const { commentbody } = req.body;
-  await Comment.create({
-    commentbody,
-    book_id: id,
-    user_id: req.session?.user?.id,
-  });
+  await Comment.destroy({ where: { id } });
   res.sendStatus(200);
 });
+module.exports = router;
 
-export default apiCommentsRouter;
