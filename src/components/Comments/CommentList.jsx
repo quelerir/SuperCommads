@@ -36,13 +36,14 @@ export default function CommentList({ comment, deleteHandler, setAllComments }) 
       <p className="card-text">
         <small className="text-muted">By username</small>
       </p>
-    <div>
-      <form onSubmit={addCommentHandler}>
-        <input name="commentbody" type="text" defaultValue={comment.commentbody} />
-        <button type="submit">Edit</button>
-      </form>
-      <div>{comment.commentbody}</div>
-      <button onClick={() => deleteHandler(comment.id)}>Delete</button>
+      <div>
+        <form onSubmit={addCommentHandler}>
+          <input name="commentbody" type="text" defaultValue={comment.commentbody} />
+          <button type="submit">Edit</button>
+        </form>
+        <div>{comment.commentbody}</div>
+        <button onClick={() => deleteHandler(comment.id)}>Delete</button>
+      </div>
     </div>
   );
 }
