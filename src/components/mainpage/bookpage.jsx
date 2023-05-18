@@ -47,11 +47,7 @@ export default function Bookpage({ book, comments, average }) {
       </div>
       <div>Коментарии:</div>
       {allComensts?.map((comment) => (
-        <CommentList
-          key={comments.id}
-          comment={comment}
-          deleteHandler={deleteHandler}
-        />
+        <CommentList key={comments.id} setAllComments={setAllComments} comment={comment} deleteHandler={deleteHandler} />
       ))}
     </div>
   );
