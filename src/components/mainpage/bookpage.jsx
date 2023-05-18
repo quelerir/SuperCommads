@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { useState } from "react";
-import CommentList from "../Comments/CommentList";
+import axios from 'axios';
+import React, { useState } from 'react';
+import CommentList from '../Comments/CommentList';
 
 export default function Bookpage({ book, comments }) {
   const [showComments, setShowComments] = useState(false);
@@ -14,7 +14,7 @@ export default function Bookpage({ book, comments }) {
   };
   return (
     <div>
-      <div className="card mb-3" style={{ maxWidth: "1100px" }}>
+      <div className="card mb-3" style={{ maxWidth: '1100px' }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img src={book.img} className="img-fluid rounded-start" alt="..." />
@@ -27,7 +27,9 @@ export default function Bookpage({ book, comments }) {
                 {book.bookname}
               </h5>
               <h5 className="card-title">
-                Автор: <br />
+                Автор:
+                {' '}
+                <br />
                 {book.author}
               </h5>
               <p className="card-text">{book.bookannotation}</p>
@@ -53,7 +55,7 @@ export default function Bookpage({ book, comments }) {
       </div>
       <div>Коментарии:</div>
       {allComensts?.map((comment) => (
-        <CommentList key={comments.id} comment={comment} deleteHandler={deleteHandler} />
+        <CommentList key={comments.id} setAllComments={setAllComments} comment={comment} deleteHandler={deleteHandler} />
       ))}
     </div>
   );
