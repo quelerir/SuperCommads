@@ -10,6 +10,7 @@ import authRouter from './routes/authRouter';
 import { authMiddleware, pathMiddleware } from './middlewares';
 import cabinetRouter from './routes/cabinetRouter';
 import addbookRouter from './routes/addbookRouter';
+import apiCommentsRouter from './routes/apiCommentsRouter';
 
 dotenv.config();
 
@@ -45,5 +46,6 @@ app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/', addbookRouter);
 app.use('/cabinet', cabinetRouter);
+app.use('/', apiCommentsRouter)
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
