@@ -13,7 +13,10 @@ export default function App({ allbooks, book, user }) {
     <div className="container">
       <NavBar user={user} />
       <Routes>
-        <Route path="/books" element={<Mainpage allbooks={allbooks} />} />
+        <Route
+          path="/books"
+          element={<Mainpage allbooks={allbooks} user={user} />}
+        />
         <Route path="books/:id" element={<Bookpage book={book} />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
