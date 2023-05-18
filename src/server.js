@@ -14,6 +14,7 @@ import apiCommentsRouter from "./routes/apiCommentsRouter";
 import apiRatingRouter from './routes/apiRatingRouter';
 
 
+
 dotenv.config();
 
 const PORT = process.env.SERVER_PORT || 3000;
@@ -49,7 +50,6 @@ app.use("/auth", authRouter);
 app.use("/", addbookRouter);
 app.use("/cabinet", cabinetRouter);
 app.use("/api", apiCommentsRouter);
-
 app.use('/api', apiRatingRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
