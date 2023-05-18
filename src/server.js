@@ -43,11 +43,12 @@ app.use(express.json());
 app.use(session(sessionConfig));
 app.use(authMiddleware);
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/', addbookRouter);
-app.use('/cabinet', cabinetRouter);
-app.use('/api', apiCommentsRouter);
+
+app.use("/", indexRouter);
+app.use("/auth", authRouter);
+app.use("/", addbookRouter);
+app.use("/cabinet", cabinetRouter);
+app.use("/api", apiCommentsRouter);
 app.use('/api', apiRatingRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
