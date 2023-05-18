@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './ui/NavBar';
 import CabinetPage from './cabinet/CabinetPage';
@@ -8,10 +8,10 @@ import AddBookPage from './addbook/AddBookPage';
 import SignUpPage from './Auth/SignUpPage';
 import LoginPage from './Auth/LoginPage';
 
-export default function App({ allbooks, book }) {
+export default function App({ allbooks, book, user }) {
   return (
     <div className="container">
-      <NavBar />
+      <NavBar user={user} />
       <Routes>
         <Route path="/books" element={<Mainpage allbooks={allbooks} />} />
         <Route path="books/:id" element={<Bookpage book={book} />} />
