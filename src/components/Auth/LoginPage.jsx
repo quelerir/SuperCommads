@@ -1,17 +1,17 @@
-import axios from "axios";
-import React from "react";
+import axios from 'axios';
+import React from 'react';
 // import Background from './images/SignUpLogin.jpg';
 
 export default function LoginPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     const response = await axios.post(
-      "/auth/login",
+      '/auth/login',
       Object.fromEntries(new FormData(e.target))
     );
 
     if (response.status === 200) {
-      window.location = "/";
+      window.location = '/books';
     }
   };
 

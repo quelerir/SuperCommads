@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export default function NavBar() {
+export default function NavBar({ user }) {
   const logoutHandler = async () => {
     const res = await axios('/auth/logout');
     if (res.status === 200) {
@@ -32,16 +32,20 @@ export default function NavBar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="/addbook">
-                  Add a book
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/cabinet">
-                  Profile
-                </a>
-              </li>
+              {user && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/addbook">
+                    Add a book
+                  </a>
+                </li>
+              )}
+              {user && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/cabinet">
+                    Profile
+                  </a>
+                </li>
+              )}
               <li className="nav-item">
                 <a className="nav-link" href="/login">
                   Login
@@ -52,11 +56,13 @@ export default function NavBar() {
                   SignUp
                 </a>
               </li>
-              <li className="nav-item">
-                <a onClick={logoutHandler} className="nav-link" href="/">
-                  LogOut
-                </a>
-              </li>
+              {user && (
+                <li className="nav-item">
+                  <a onClick={logoutHandler} className="nav-link" href="/">
+                    LogOut
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
