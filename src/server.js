@@ -43,7 +43,6 @@ app.use(express.json());
 app.use(session(sessionConfig));
 app.use(authMiddleware);
 
-
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/", addbookRouter);

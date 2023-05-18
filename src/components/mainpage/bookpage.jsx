@@ -6,6 +6,22 @@ export default function Bookpage({ book, comments, average }) {
   const [showComments, setShowComments] = useState(false);
   const [allComensts, setAllComments] = useState(comments);
 
+  const [input, setInput] = useState({
+    commentbody: '',
+  });
+
+  const addHandler = (event) => {
+    setInput((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    const response = await axios.post(`/api/addcommets/${book.id}`, input);
+    console.log(response);
+    setAllComments((prev) => [response.data, ...prev]);
+    setInput({ commentbody: '' });
+  };
+
   const deleteHandler = async (commentId) => {
     const response = await axios.delete(`/api/comments/${commentId}`, {});
     if (response.status === 200) {
@@ -36,8 +52,15 @@ export default function Bookpage({ book, comments, average }) {
             </div>
             {showComments && (
               <div>
-                <form>
-                  <input type="text" placeholder="Коментарий" />
+                <form onSubmit={(event) => submitHandler(event)}>
+                  <input
+                    name="commentbody"
+                    type="text"
+                    placeholder="Комментарий"
+                    value={input.commentbody}
+                    onChange={addHandler}
+
+                  />
                   <button type="submit">Добавить</button>
                 </form>
               </div>
