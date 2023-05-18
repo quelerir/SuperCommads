@@ -4,14 +4,30 @@ import { Rating } from '../../db/models';
 const apiRatingRouter = express.Router();
 
 apiRatingRouter.post('/rating/:id', async (req, res) => {
-  const bookid = req.params.id;
+  const bookId = req.params.id;
   const { ratingvalue } = req.body;
   const { id } = req.session.user;
-  await Rating.create({
-    ratingvalue,
-    book_id: bookid,
-    user_id: id,
+
+  let rating = await Rating.findOne({
+    where: {
+      book_id: bookId,
+      user_id: id,
+    },
   });
+
+  if (rating) {
+    rating.ratingvalue = ratingvalue;
+    await rating.save();
+  }
+  if (!rating) {
+    rating = await Rating.create({
+      ratingvalue,
+      book_id: bookId,
+      user_id: id,
+    });
+  }
+
+  res.sendStatus(200);
 });
 
 export default apiRatingRouter;
