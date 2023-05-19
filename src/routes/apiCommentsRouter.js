@@ -1,8 +1,8 @@
 import express from 'express';
 import { Comment } from '../../db/models';
+import { checkUser } from '../middlewares';
 
 const router = express.Router();
-
 
 router.post('/addcommets/:id', async (req, res) => {
   const { id } = req.params;
@@ -13,8 +13,8 @@ router.post('/addcommets/:id', async (req, res) => {
     user_id: req.session?.user?.id,
   });
   res.json(comm);
-  
-router.patch('/comments/:id', async (req, res) => {
+});
+router.patch('/comments/:id', checkUser, async (req, res) => {
   const { id } = req.params;
   const { commentbody } = req.body;
   await Comment.update({ commentbody }, { where: { id } });
@@ -22,12 +22,10 @@ router.patch('/comments/:id', async (req, res) => {
   res.json(data);
 });
 
-router.delete('/comments/:id', async (req, res) => {
+router.delete('/comments/:id', checkUser, async (req, res) => {
   const { id } = req.params;
   await Comment.destroy({ where: { id } });
   res.sendStatus(200);
 });
 
-
 export default router;
-
