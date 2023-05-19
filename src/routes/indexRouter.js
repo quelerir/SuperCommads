@@ -1,6 +1,7 @@
 import express from 'express';
 import { literal } from 'sequelize';
 import { Book, Rating, Comment, User } from '../../db/models';
+import { checkUserBook } from '../middlewares';
 
 const indexRouter = express.Router();
 
@@ -49,7 +50,7 @@ indexRouter.get('/books/:id', async (req, res) => {
   }
 });
 
-indexRouter.delete('/bookdelete/:id', async (req, res) => {
+indexRouter.delete('/bookdelete/:id', checkUserBook, async (req, res) => {
   const { id } = req.params;
   await Book.destroy({ where: { id } });
   res.sendStatus(200);

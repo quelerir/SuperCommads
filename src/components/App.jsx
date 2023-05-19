@@ -27,7 +27,7 @@ export default function App({
         <Route
           path="books/:id"
           element={
-            <Bookpage book={book} comments={comments} average={average} />
+            <Bookpage book={book} comments={comments} average={average} user={user} />
           }
         />
         <Route path="/signup" element={<SignUpPage />} />

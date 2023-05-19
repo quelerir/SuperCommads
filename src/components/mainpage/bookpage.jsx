@@ -2,10 +2,11 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import CommentList from '../Comments/CommentList';
 
-export default function Bookpage({ book, comments, average }) {
+export default function Bookpage({
+  book, comments, average, user,
+}) {
   const [showComments, setShowComments] = useState(false);
   const [allComensts, setAllComments] = useState(comments);
-
 
   const [input, setInput] = useState({
     commentbody: '',
@@ -39,19 +40,34 @@ export default function Bookpage({ book, comments, average }) {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">Название: {book.bookname}</h5>
-              <h5 className="card-title">Рейтинг: {average}</h5>
-              <h5 className="card-title">Автор: {book.author}</h5>
+              <h5 className="card-title">
+                Название:
+                {' '}
+                {book.bookname}
+              </h5>
+              <h5 className="card-title">
+                Рейтинг:
+                {' '}
+                {average}
+              </h5>
+              <h5 className="card-title">
+                Автор:
+                {' '}
+                {book.author}
+              </h5>
               <p className="card-text">{book.bookannotation}</p>
             </div>
             <div>
-              <button
-                className="btn btn-outline-secondary"
-                onClick={() => setShowComments(!showComments)}
-                type="button"
-              >
-                Оставить коментарий
-              </button>
+              { user?.id
+                && (
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => setShowComments(!showComments)}
+                  type="button"
+                >
+                  Оставить коментарий
+                </button>
+                )}
             </div>
             {showComments && (
               <div>
@@ -80,6 +96,7 @@ export default function Bookpage({ book, comments, average }) {
           setAllComments={setAllComments}
           comment={comment}
           deleteHandler={deleteHandler}
+          user={user}
         />
       ))}
     </div>
