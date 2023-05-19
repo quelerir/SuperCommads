@@ -50,9 +50,13 @@ indexRouter.get('/books/:id', async (req, res) => {
 });
 
 indexRouter.delete('/bookdelete/:id', async (req, res) => {
-  const { id } = req.params;
-  await Book.destroy({ where: { id } });
-  res.sendStatus(200);
+  try {
+    const { id } = req.params;
+    await Book.destroy({ where: { id } });
+    res.sendStatus(200);
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 indexRouter.post('/books/search', async (req, res) => {
