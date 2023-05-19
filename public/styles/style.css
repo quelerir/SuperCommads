@@ -94,7 +94,6 @@
 .card-login {
   background-image: url('../images/bookCover.jpg');
   background-size: cover;
-  height: 100vh;
 }
 
 .form-control {
@@ -109,6 +108,8 @@
 
 .title {
   padding: 30px;
+  color: #fff;
+  text-shadow: 0px 5px 20px rgba(0, 0, 0, 0.88);
 }
 
 .search-form {
