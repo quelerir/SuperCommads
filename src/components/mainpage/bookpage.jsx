@@ -6,6 +6,7 @@ export default function Bookpage({ book, comments, average }) {
   const [showComments, setShowComments] = useState(false);
   const [allComensts, setAllComments] = useState(comments);
 
+
   const [input, setInput] = useState({
     commentbody: '',
   });
@@ -16,6 +17,7 @@ export default function Bookpage({ book, comments, average }) {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    setShowComments(!showComments);
     const response = await axios.post(`/api/addcommets/${book.id}`, input);
     console.log(response);
     setAllComments((prev) => [response.data, ...prev]);
@@ -44,6 +46,7 @@ export default function Bookpage({ book, comments, average }) {
             </div>
             <div>
               <button
+                className="btn btn-outline-secondary"
                 onClick={() => setShowComments(!showComments)}
                 type="button"
               >
@@ -55,22 +58,29 @@ export default function Bookpage({ book, comments, average }) {
                 <form onSubmit={(event) => submitHandler(event)}>
                   <input
                     name="commentbody"
+                    className="form-control"
                     type="text"
                     placeholder="Комментарий"
                     value={input.commentbody}
                     onChange={addHandler}
-
                   />
-                  <button type="submit">Добавить</button>
+                  <button className="btn btn-outline-secondary" type="submit">
+                    Добавить
+                  </button>
                 </form>
               </div>
             )}
           </div>
         </div>
       </div>
-      <div>Коментарии:</div>
+      <h5>Коментарии:</h5>
       {allComensts?.map((comment) => (
-        <CommentList key={comments.id} setAllComments={setAllComments} comment={comment} deleteHandler={deleteHandler} />
+        <CommentList
+          key={comment.id}
+          setAllComments={setAllComments}
+          comment={comment}
+          deleteHandler={deleteHandler}
+        />
       ))}
     </div>
   );

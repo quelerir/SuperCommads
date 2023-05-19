@@ -17,7 +17,7 @@
   text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
-  content: "★";
+  content: '★';
 }
 .rating-area > input:checked ~ label {
   color: gold;
@@ -55,6 +55,19 @@
   border-radius: 5px;
 }
 
+.addbtn-login {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  background: #653208;
+  color: #fff;
+  border: 0px;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
 .form-group {
   margin: 15px 0 15px 0;
 }
@@ -62,6 +75,12 @@
 .form-group input {
   background-color: transparent;
   border-color: #653208;
+}
+
+.text {
+  background-color: transparent;
+  border-color: #653208;
+  color: #d5d4d4;
 }
 
 .form-group input::placeholder {
@@ -73,10 +92,21 @@
 }
 
 .card-login {
-  background-image: url("../images/bookCover.jpg");
+  background-image: url('../images/bookCover.jpg');
   height: 100vh;
 }
 
 .form-control {
   color: #d5d4d4;
+}
+
+.img-search {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+
+.search-form {
+  position: sticky;
+  left: 1150px;
 }

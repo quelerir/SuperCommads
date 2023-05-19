@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function Bookcard({ book, user }) {
+export default function Bookcard({ book, user, deleteHandler }) {
   const [showLike, setShowLike] = useState(false);
 
   useEffect(() => {
@@ -21,6 +21,7 @@ export default function Bookcard({ book, user }) {
     const ratingvalue = e.target.value;
     await axios.post(`/api/rating/${book.id}`, { ratingvalue });
   };
+
   return (
     <div className="card mb-3" style={{ maxWidth: '540px' }}>
       <div className="row g-0">
@@ -92,7 +93,7 @@ export default function Bookcard({ book, user }) {
               </div>
             </div>
           )}
-          {!showLike && (
+          {user && !showLike && (
             <div>
               <svg
                 onClick={submitLike}
@@ -111,7 +112,7 @@ export default function Bookcard({ book, user }) {
               </svg>
             </div>
           )}
-          {showLike && (
+          {user && showLike && (
             <div>
               <svg
                 onClick={submitLike}
@@ -125,6 +126,13 @@ export default function Bookcard({ book, user }) {
                 <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
               </svg>
             </div>
+          )}
+        </div>
+        <div>
+          {user && (
+            <button onClick={() => deleteHandler(book.id)} type="button">
+              удалить книгу
+            </button>
           )}
         </div>
       </div>

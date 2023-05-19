@@ -1,6 +1,6 @@
 import express from 'express';
-import { Comment } from '../../db/models';
 import { checkUser } from '../middlewares';
+import { Comment, User } from '../../db/models';
 
 const router = express.Router();
 
