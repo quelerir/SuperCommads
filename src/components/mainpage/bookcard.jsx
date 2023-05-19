@@ -93,7 +93,7 @@ export default function Bookcard({ book, user, deleteHandler }) {
               </div>
             </div>
           )}
-          {!showLike && (
+          {user && !showLike && (
             <div>
               <svg
                 onClick={submitLike}
@@ -112,7 +112,7 @@ export default function Bookcard({ book, user, deleteHandler }) {
               </svg>
             </div>
           )}
-          {showLike && (
+          {user && showLike && (
             <div>
               <svg
                 onClick={submitLike}
@@ -129,9 +129,11 @@ export default function Bookcard({ book, user, deleteHandler }) {
           )}
         </div>
         <div>
-          <button onClick={() => deleteHandler(book.id)} type="button">
-            удалить книгу
-          </button>
+          {user && (
+            <button onClick={() => deleteHandler(book.id)} type="button">
+              удалить книгу
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export default function CommentList({
   comment,
@@ -27,11 +27,9 @@ export default function CommentList({
   };
   return (
     <div className="card bg-light mb-3">
-      <div className="card-header">By username</div>
+      <div className="card-header">{comment?.User?.username}</div>
       <div className="card-body">
-        <p onClick={() => setShowEdit(!showEdit)} className="card-text">
-          {comment.commentbody}
-        </p>
+        <p className="card-text">{comment.commentbody}</p>
       </div>
 
       <div className="control-icons">

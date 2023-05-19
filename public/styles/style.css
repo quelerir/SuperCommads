@@ -105,3 +105,8 @@
   height: 60px;
   margin-right: 10px;
 }
+
+.search-form {
+  position: sticky;
+  left: 1150px;
+}
