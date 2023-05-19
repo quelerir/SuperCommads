@@ -1,14 +1,13 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import CommentList from '../Comments/CommentList';
+import axios from "axios";
+import React, { useState } from "react";
+import CommentList from "../Comments/CommentList";
 
 export default function Bookpage({ book, comments, average }) {
   const [showComments, setShowComments] = useState(false);
   const [allComensts, setAllComments] = useState(comments);
 
-
   const [input, setInput] = useState({
-    commentbody: '',
+    commentbody: "",
   });
 
   const addHandler = (event) => {
@@ -21,7 +20,7 @@ export default function Bookpage({ book, comments, average }) {
     const response = await axios.post(`/api/addcommets/${book.id}`, input);
     console.log(response);
     setAllComments((prev) => [response.data, ...prev]);
-    setInput({ commentbody: '' });
+    setInput({ commentbody: "" });
   };
 
   const deleteHandler = async (commentId) => {
@@ -31,8 +30,8 @@ export default function Bookpage({ book, comments, average }) {
     }
   };
   return (
-    <div>
-      <div className="card mb-3" style={{ maxWidth: '1100px' }}>
+    <div className="card-login">
+      <div className="card mb-3" style={{ maxWidth: "1100px" }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img src={book.img} className="img-fluid rounded-start" alt="..." />
