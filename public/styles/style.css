@@ -8,16 +8,16 @@
 }
 .rating-area:not(:checked) > label {
   float: right;
-  width: 15px;
+  width: 25px;
   padding: 0;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 25px;
   line-height: 32px;
   color: lightgrey;
   text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
-  content: "★";
+  content: '★';
 }
 .rating-area > input:checked ~ label {
   color: gold;
@@ -92,7 +92,7 @@
 }
 
 .card-login {
-  background-image: url("../images/bookCover.jpg");
+  background-image: url('../images/bookCover.jpg');
   background-size: cover;
   height: 100vh;
 }
@@ -114,4 +114,16 @@
 .search-form {
   position: sticky;
   left: 1150px;
+}
+
+.bookMark {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+
+.imgcard {
+  width: 175px;
+  height: 255px;
+  border-radius: 8px;
 }
