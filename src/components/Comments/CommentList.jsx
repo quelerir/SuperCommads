@@ -5,6 +5,7 @@ export default function CommentList({
   comment,
   deleteHandler,
   setAllComments,
+  user,
 }) {
   const [showEdit, setShowEdit] = useState(false);
 
@@ -16,14 +17,12 @@ export default function CommentList({
     });
     setShowEdit(!showEdit);
     const res = response.data;
-    setAllComments((prev) =>
-      prev.map((el) => {
-        if (el.id === res.id) {
-          return res;
-        }
-        return el;
-      })
-    );
+    setAllComments((prev) => prev.map((el) => {
+      if (el.id === res.id) {
+        return res;
+      }
+      return el;
+    }));
   };
   return (
     <div className="card bg-light mb-3">
@@ -33,6 +32,11 @@ export default function CommentList({
       </div>
 
       <div className="control-icons">
+
+   {
+          user?.id === comment.user_id
+          && (
+            <>
         <button
           onClick={() => setShowEdit(!showEdit)}
           type="button"
@@ -66,6 +70,10 @@ export default function CommentList({
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
           </svg>
         </button>
+ </>
+          )
+}
+
       </div>
 
       {showEdit && (
