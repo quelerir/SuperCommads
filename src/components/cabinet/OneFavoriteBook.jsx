@@ -5,11 +5,19 @@ export default function OneFavoriteBook({ favorite }) {
     <div className="card mb-3" style={{ maxWidth: '540px' }}>
       <div className="row g-0">
         <div className="col-md-4">
-          <img
-            src={favorite.img}
-            className="img-fluid rounded-start"
-            alt="..."
-          />
+          <a href={`/books/${favorite.id}`}>
+            <img
+              style={{
+                marginTop: '20px',
+                width: '500px',
+                height: '250px',
+                marginBottom: '20px',
+              }}
+              src={favorite.img}
+              className="img-fluid rounded-start"
+              alt="..."
+            />
+          </a>
         </div>
         <div className="col-md-8">
           <div className="card-body">

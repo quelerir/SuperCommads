@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Bookcard from './bookcard';
+import React, { useState } from "react";
+import axios from "axios";
+import Bookcard from "./bookcard";
 
 export default function Mainpage({ allbooks, user }) {
   const [books, setBooks] = useState(allbooks);
@@ -13,15 +13,17 @@ export default function Mainpage({ allbooks, user }) {
   };
 
   return (
-    <div className="row justify-content-evenly wrapper">
-      {books.map((book) => (
-        <Bookcard
-          key={book.id}
-          deleteHandler={deleteHandler}
-          book={book}
-          user={user}
-        />
-      ))}
+    <div className="card-login">
+      <div className="row justify-content-evenly wrapper">
+        {books.map((book) => (
+          <Bookcard
+            key={book.id}
+            deleteHandler={deleteHandler}
+            book={book}
+            user={user}
+          />
+        ))}
+      </div>
     </div>
   );
 }

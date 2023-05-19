@@ -32,8 +32,8 @@ export default function Bookpage({
     }
   };
   return (
-    <div>
-      <div className="card mb-3" style={{ maxWidth: '1100px' }}>
+    <div className="card-login">
+      <div className="card mb-3" >
         <div className="row g-0">
           <div className="col-md-4">
             <img src={book.img} className="img-fluid rounded-start" alt="..." />
