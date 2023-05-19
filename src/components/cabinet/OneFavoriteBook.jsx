@@ -7,6 +7,12 @@ export default function OneFavoriteBook({ favorite }) {
         <div className="col-md-4">
           <a href={`/books/${favorite.id}`}>
             <img
+              style={{
+                marginTop: '20px',
+                width: '500px',
+                height: '250px',
+                marginBottom: '20px',
+              }}
               src={favorite.img}
               className="img-fluid rounded-start"
               alt="..."

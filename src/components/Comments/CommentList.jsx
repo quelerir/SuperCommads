@@ -33,9 +33,12 @@ export default function CommentList({
       </div>
 
       <div className="control-icons">
-        <button type="button" className="btn btn-outline-secondary comment-btn">
+        <button
+          onClick={() => setShowEdit(!showEdit)}
+          type="button"
+          className="btn btn-outline-secondary comment-btn"
+        >
           <svg
-            onClick={() => setShowEdit(!showEdit)}
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -47,9 +50,12 @@ export default function CommentList({
           </svg>
         </button>
 
-        <button type="button" className="btn btn-outline-secondary ">
+        <button
+          onClick={() => deleteHandler(comment.id)}
+          type="button"
+          className="btn btn-outline-secondary "
+        >
           <svg
-            onClick={() => deleteHandler(comment.id)}
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"

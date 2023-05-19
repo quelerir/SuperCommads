@@ -30,7 +30,11 @@ router.patch('/comments/:id', checkUser, async (req, res) => {
     const { commentbody } = req.body;
     await Comment.update({ commentbody }, { where: { id } });
     const data = await Comment.findByPk(req.params.id);
-    res.json(data);
+    const user = await User.findByPk(req.session?.user?.id);
+    res.json({
+      ...data.toJSON(),
+      User: user,
+    });
   } catch (e) {
     console.log(e);
   }
