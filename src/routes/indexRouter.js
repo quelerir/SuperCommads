@@ -1,6 +1,6 @@
 import express from 'express';
-import { Op, col, fn, literal } from 'sequelize';
-import { Book, Rating, Comment } from '../../db/models';
+import { literal } from 'sequelize';
+import { Book, Rating, Comment, User } from '../../db/models';
 
 const indexRouter = express.Router();
 
@@ -26,7 +26,11 @@ indexRouter.get('/books/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const book = await Book.findByPk(id);
-    const comments = await Comment.findAll({ where: { book_id: id } });
+    const comments = await Comment.findAll({
+      where: { book_id: id },
+      include: { model: User },
+      order: [['id', 'DESC']],
+    });
     const allRatings = await Rating.findAll({ where: { book_id: id } });
 
     const ratings = allRatings.map((item) => item.ratingvalue);

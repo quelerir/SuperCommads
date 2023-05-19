@@ -85,21 +85,22 @@ export default function NavBar({ user }) {
                 </li>
               )}
             </ul>
-            <form className="d-flex" role="search">
+            <form  className="d-flex search-form" role="search">
               <input
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
                 name="bookname"
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
-                aria-label="Search..."
+                placeholder="Search..."
+                aria-label="Search"
+                autoComplete="off"
               />
             </form>
             <ul
               style={{
                 position: 'absolute',
-                left: '287px',
+                left: '1000px',
                 top: '58px',
                 zIndex: '1',
               }}
