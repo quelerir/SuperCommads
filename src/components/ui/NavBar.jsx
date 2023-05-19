@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import OneSearch from './OneSearch';
 
 export default function NavBar({ user }) {
+  const [search, setSearch] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
+  useEffect(() => {
+    const searchHandler = async (e) => {
+      try {
+        setSearchResult([]);
+        const response = await axios.post('/books/search', { search });
+        setSearchResult(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    searchHandler();
+  }, [search]);
+
   const logoutHandler = async () => {
     const res = await axios('/auth/logout');
     if (res.status === 200) {
       window.location = '/books';
     }
   };
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar  navbar-expand-lg bg-body-tertiary ">
         <div className="container-fluid">
           <a className="navbar-brand" href="/books">
             <img
@@ -67,6 +84,30 @@ export default function NavBar({ user }) {
                   </a>
                 </li>
               )}
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                name="bookname"
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search..."
+              />
+            </form>
+            <ul
+              style={{
+                position: 'absolute',
+                left: '287px',
+                top: '58px',
+                zIndex: '1',
+              }}
+              className="list-group"
+            >
+              {searchResult.map((searchBook) => (
+                <OneSearch key={searchBook.id} searchBook={searchBook} />
+              ))}
             </ul>
           </div>
         </div>

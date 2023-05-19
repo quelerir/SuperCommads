@@ -1,5 +1,5 @@
-
 import express from 'express';
+import { Op, col, fn, literal } from 'sequelize';
 import { Book, Rating, Comment } from '../../db/models';
 
 const indexRouter = express.Router();
@@ -42,6 +42,25 @@ indexRouter.get('/books/:id', async (req, res) => {
     res.render('Layout', initState);
   } catch (e) {
     console.log(e);
+  }
+});
+
+indexRouter.delete('/bookdelete/:id', async (req, res) => {
+  const { id } = req.params;
+  await Book.destroy({ where: { id } });
+  res.sendStatus(200);
+});
+
+indexRouter.post('/books/search', async (req, res) => {
+  try {
+    const { search } = req.body;
+    if (!search) return res.sendStatus(400);
+    const books = await Book.findAll({
+      where: literal(`LOWER(bookname) LIKE '${search.toLowerCase()}%'`),
+    });
+    res.status(200).json(books);
+  } catch (e) {
+    res.sendStatus(500);
   }
 });
 

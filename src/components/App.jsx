@@ -32,7 +32,7 @@ export default function App({
         />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/cabinet" element={<CabinetPage favoriteBooks={favoriteBooks} />} />
+        <Route path="/cabinet" element={<CabinetPage favoriteBooks={favoriteBooks} user={user} />} />
         <Route path="/addbook" element={<AddBookPage />} />
       </Routes>
     </div>
