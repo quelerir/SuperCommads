@@ -1,13 +1,13 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import CommentList from '../Comments/CommentList';
+import axios from "axios";
+import React, { useState } from "react";
+import CommentList from "../Comments/CommentList";
 
 export default function Bookpage({ book, comments, average }) {
   const [showComments, setShowComments] = useState(false);
   const [allComensts, setAllComments] = useState(comments);
 
   const [input, setInput] = useState({
-    commentbody: '',
+    commentbody: "",
   });
 
   const addHandler = (event) => {
@@ -20,7 +20,7 @@ export default function Bookpage({ book, comments, average }) {
     const response = await axios.post(`/api/addcommets/${book.id}`, input);
     console.log(response);
     setAllComments((prev) => [response.data, ...prev]);
-    setInput({ commentbody: '' });
+    setInput({ commentbody: "" });
   };
 
   const deleteHandler = async (commentId) => {
@@ -31,7 +31,7 @@ export default function Bookpage({ book, comments, average }) {
   };
   return (
     <div>
-      <div className="card mb-3" style={{ maxWidth: '1100px' }}>
+      <div className="card mb-3" style={{ maxWidth: "1100px" }}>
         <div className="row g-0">
           <div className="col-md-4">
             <img src={book.img} className="img-fluid rounded-start" alt="..." />
@@ -45,6 +45,7 @@ export default function Bookpage({ book, comments, average }) {
             </div>
             <div>
               <button
+                className="btn btn-outline-secondary"
                 onClick={() => setShowComments(!showComments)}
                 type="button"
               >
@@ -56,19 +57,22 @@ export default function Bookpage({ book, comments, average }) {
                 <form onSubmit={(event) => submitHandler(event)}>
                   <input
                     name="commentbody"
+                    className="form-control"
                     type="text"
                     placeholder="Комментарий"
                     value={input.commentbody}
                     onChange={addHandler}
                   />
-                  <button type="submit">Добавить</button>
+                  <button className="btn btn-outline-secondary" type="submit">
+                    Добавить
+                  </button>
                 </form>
               </div>
             )}
           </div>
         </div>
       </div>
-      <div>Коментарии:</div>
+      <h5>Коментарии:</h5>
       {allComensts?.map((comment) => (
         <CommentList
           key={comments.id}
