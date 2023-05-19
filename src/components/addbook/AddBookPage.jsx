@@ -58,7 +58,7 @@ export default function AddBookPage() {
               name="bookannotation"
               aria-label="With textarea"
               style={{ margin: '10px' }}
-              className=" text form-control"
+              className=" text form-control white-placeholder"
               placeholder="Краткое содержание"
               onChange={changeHandler}
               value={input.bookannotation}

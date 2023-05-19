@@ -23,7 +23,7 @@ export default function Bookcard({ book, user, deleteHandler }) {
   };
 
   return (
-    <div className="card mb-3" style={{ maxWidth: '540px' }}>
+    <div className="card mb-3" style={{ maxWidth: '540px', marginTop: '20px' }}>
       <div className="row g-0">
         <div className="bookMark">
           {!showLike && (
@@ -94,7 +94,7 @@ export default function Bookcard({ book, user, deleteHandler }) {
           </div>
           {user && (
             <div
-              style={{ position: 'absolute', right: '30px' }}
+              style={{ position: 'absolute', bottom: '20px', right: '30px' }}
               className="rating-area"
             >
               <input
@@ -141,13 +141,15 @@ export default function Bookcard({ book, user, deleteHandler }) {
           )}
         </div>
         <div style={{ marginLeft: '5px', marginBottom: '10px' }}>
-          <button
-            className="btn btn-outline-secondary"
-            onClick={() => deleteHandler(book.id)}
-            type="button"
-          >
-            Удалить книгу
-          </button>
+          {user?.id === book.user_id && (
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => deleteHandler(book.id)}
+              type="button"
+            >
+              Удалить книгу
+            </button>
+          )}
         </div>
       </div>
     </div>
