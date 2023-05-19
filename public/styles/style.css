@@ -17,7 +17,7 @@
   text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
-  content: '★';
+  content: "★";
 }
 .rating-area > input:checked ~ label {
   color: gold;
@@ -92,7 +92,7 @@
 }
 
 .card-login {
-  background-image: url('../images/bookCover.jpg');
+  background-image: url("../images/bookCover.jpg");
   height: 100vh;
 }
 
@@ -105,6 +105,10 @@
   height: 60px;
   margin-right: 10px;
 }
+
+
+.title {
+  padding: 40px;
 
 .search-form {
   position: sticky;
