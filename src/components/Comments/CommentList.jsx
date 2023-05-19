@@ -29,9 +29,7 @@ export default function CommentList({
     <div className="card bg-light mb-3">
       <div className="card-header">By username</div>
       <div className="card-body">
-        <p onClick={() => setShowEdit(!showEdit)} className="card-text">
-          {comment.commentbody}
-        </p>
+        <p className="card-text">{comment.commentbody}</p>
       </div>
 
       <div className="control-icons">
