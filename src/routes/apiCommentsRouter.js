@@ -1,4 +1,5 @@
 import express from 'express';
+import { checkUser } from '../middlewares';
 import { Comment, User } from '../../db/models';
 
 const router = express.Router();
@@ -13,8 +14,7 @@ router.post('/addcommets/:id', async (req, res) => {
   });
   res.json(comm);
 });
-
-router.patch('/comments/:id', async (req, res) => {
+router.patch('/comments/:id', checkUser, async (req, res) => {
   const { id } = req.params;
   const { commentbody } = req.body;
   await Comment.update({ commentbody }, { where: { id } });
@@ -22,7 +22,7 @@ router.patch('/comments/:id', async (req, res) => {
   res.json(data);
 });
 
-router.delete('/comments/:id', async (req, res) => {
+router.delete('/comments/:id', checkUser, async (req, res) => {
   const { id } = req.params;
   await Comment.destroy({ where: { id } });
   res.sendStatus(200);
