@@ -93,6 +93,7 @@
 
 .card-login {
   background-image: url("../images/bookCover.jpg");
+  background-size: cover;
   height: 100vh;
 }
 
@@ -106,9 +107,9 @@
   margin-right: 10px;
 }
 
-
 .title {
-  padding: 40px;
+  padding: 30px;
+}
 
 .search-form {
   position: sticky;
